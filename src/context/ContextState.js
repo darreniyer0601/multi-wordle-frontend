@@ -36,6 +36,12 @@ const ContextState = (props) => {
 		return () => newSocket.close();
 	}, []);
 
+	useEffect(() => {
+		socket.on('moveMade', obj => {
+			console.log('obj', obj);
+		})
+	})
+
 	const getWord = async () => {
 		dispatch({
 			type: WORD_FETCHED,
@@ -72,19 +78,20 @@ const ContextState = (props) => {
 		});
 	};
 
-	const userAttempt = (input) => {
+	const userAttempt = async (input) => {
+		await socket.emit('move', input);
 		dispatch({
 			type: ATTEMPT_MADE,
 			payload: input,
 		});
 	};
 
-	const opponentMove = (input) => {
-		dispatch({
-			type: OPPONENT_ATTEMPT,
-			payload: input,
-		});
-	};
+	// const opponentMove = (input) => {
+	// 	dispatch({
+	// 		type: OPPONENT_ATTEMPT,
+	// 		payload: input,
+	// 	});
+	// };
 
 	const endTimer = () => {
 		dispatch({
