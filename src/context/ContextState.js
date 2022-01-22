@@ -5,12 +5,14 @@ import ContextReducer from "./ContextReducer";
 import {
     WORD_FETCHED,
     ATTEMPT_MADE,
-    TIME_ENDED
+    TIME_ENDED,
+    OPPONENT_ATTEMPT
 } from './types';
 
 const initialState = {
     givenWord: '',
     attempt: 0,
+    opponentAttempt: 0,
     gridState: [],
     gridAttempt: [],
     opponentState: [],
@@ -30,6 +32,13 @@ const ContextState = (props) => {
     const userAttempt = (input) => {
         dispatch({
             type: ATTEMPT_MADE,
+            payload: input
+        })
+    }
+
+    const opponentMove = (input) => {
+        dispatch({
+            type: OPPONENT_ATTEMPT,
             payload: input
         })
     }
