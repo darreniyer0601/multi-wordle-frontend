@@ -11,6 +11,16 @@ const Grid = () => {
 		// eslint-disable-next-line
 	}, []);
 
+	useEffect(() => {
+		if (ctx.win) {
+			alert('You have completed the challenge!');
+		} else {
+			if (ctx.attempt >= 6) {
+				alert('Sorry! Try again next time!');
+			}
+		}
+	}, [ctx]);
+
 	const grid = [0, 1, 2, 3, 4, 5];
 	const row = [0, 1, 2, 3, 4];
 
