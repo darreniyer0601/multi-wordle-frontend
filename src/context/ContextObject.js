@@ -7,14 +7,19 @@ const initialState = {
     gridState: [],
     gridAttempt: [],
     opponentState: [],
-    win: false
+    win: false,
+    players: 0,
+    room: null,
+    playerId: null
 }
 
 const ContextObject = React.createContext({
     ...initialState,
     getWord: () => {},
     userAttempt: (input) => {},
-    endTimer: () => {}
+    endTimer: () => {},
+    createRoom: (room) => {},
+    joinRoom: (room) => {}
 });
 
 export default ContextObject;

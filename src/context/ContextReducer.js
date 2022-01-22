@@ -3,6 +3,8 @@ import {
 	ATTEMPT_MADE,
 	TIME_ENDED,
 	OPPONENT_ATTEMPT,
+	ROOM_CREATED,
+	ROOM_JOINED,
 } from "./types";
 
 const ContextReducer = (state, action) => {
@@ -124,6 +126,27 @@ const ContextReducer = (state, action) => {
 				win: false,
 				attempt: 7,
 			};
+		case ROOM_CREATED:
+			return {
+				...state,
+				room: action.room,
+				players: action.players,
+				playerId: action.id
+			}
+		case ROOM_JOINED:
+			let plId = null;
+			if (state.playerId === null) {
+				plId = action.id;
+			} else {
+				plId = state.playerId;
+			}
+
+			return {
+				...state,
+				room: action.room,
+				players: action.players,
+				playerId: plId
+			}
 		default:
 			return state;
 	}
