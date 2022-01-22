@@ -17,6 +17,16 @@ h2 {
 
 }
 
+#ourgrid {
+  position: absolute;
+  margin-left: 200px;
+}
+
+#oponentgrid {
+  position: relative;
+  margin-left: 650px;
+}
+
 button {
   background-color: #008B8B;
   height: 50px;
