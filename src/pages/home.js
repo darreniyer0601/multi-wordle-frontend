@@ -2,6 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Home = () => {
+	function appear() {
+		document.getElementById("rectangle1").style.display = "block"
+		document.getElementById("rectangle2").style.display = "block"
+	}
+	appear();
 	return (
 		<div className="App">
 			<h2>Wordly</h2>

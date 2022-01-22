@@ -12,6 +12,8 @@ import ContextState from "./context/ContextState";
 function App() {
 	return (
 		<div className="App">
+      <div id="rectangle1"></div>
+      <div id="rectangle2"></div>
 			<ContextState>
 				<nav>
 					<ul className="horizontal gray">
