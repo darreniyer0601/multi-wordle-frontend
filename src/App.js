@@ -3,7 +3,6 @@ import "./App.css";
 import Attempt from "./components/attempt";
 
 import Grid from "./components/grid";
-import Input from "./components/input";
 import ContextState from "./context/ContextState";
 
 function App() {
@@ -15,7 +14,6 @@ function App() {
         <br></br>
         <h3>Shoot your shot soldier!</h3>
         <Attempt />
-        {/* <Input /> */}
 			</ContextState>
 		</div>
 	);

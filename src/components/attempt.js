@@ -22,7 +22,9 @@ const Attempt = () => {
     }
 
 	return <form onSubmit={handleSubmit}>
-        <input type='text' onChange={handleChange} value={state} maxLength={5} />
+        {
+            (ctx.win || ctx.attempt < 6) && <input type='text' onChange={handleChange} value={state} minLength={5} maxLength={5} />
+        }
         <br></br>
         {
             !ctx.win && ctx.attempt >= 6 && (
