@@ -7,7 +7,9 @@ const Attempt = () => {
 	const ctx = useContext(ContextObject);
 
 	const handleChange = (e) => {
-		setState(e.target.value);
+		let value = e.target.value;
+		value = value.replace(/[^A-Za-z]/ig, '');
+		setState(value);
 	};
 
 	const handleSubmit = (e) => {
