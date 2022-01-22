@@ -18,18 +18,27 @@ function MyTimer({ expiryTimestamp }) {
 		onExpire: () => console.warn("onExpire called"),
 	});
 
-    useEffect(() => {
-        const time = new Date();
+	const ctx = useContext(ContextObject);
+
+	useEffect(() => {
+		const time = new Date();
 		time.setSeconds(time.getSeconds() + 300);
 		restart(time);
 
-        // eslint-disable-next-line
-    }, [])
+		// eslint-disable-next-line
+	}, []);
+
+	useEffect(() => {
+		if (minutes == 0 && seconds == 0) {
+			ctx.endTimer();
+		}
+	});
 
 	return (
 		<div style={{ textAlign: "center" }}>
 			<div style={{ fontSize: "50px" }}>
-				<span>0{minutes}</span>:<span>{seconds < 10 ? `0${seconds}` : seconds}</span>
+				<span>0{minutes}</span>:
+				<span>{seconds < 10 ? `0${seconds}` : seconds}</span>
 			</div>
 			{/* <button onClick={start}>Start</button>
 			<button onClick={pause}>Pause</button>
@@ -49,7 +58,7 @@ function MyTimer({ expiryTimestamp }) {
 }
 
 const Timer = () => {
-    const ctx = useContext(ContextObject);
+	const ctx = useContext(ContextObject);
 	const time = new Date();
 	time.setSeconds(time.getSeconds() + 300);
 

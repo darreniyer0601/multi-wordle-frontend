@@ -4,7 +4,8 @@ import ContextReducer from "./ContextReducer";
 
 import {
     WORD_FETCHED,
-    ATTEMPT_MADE
+    ATTEMPT_MADE,
+    TIME_ENDED
 } from './types';
 
 const initialState = {
@@ -32,11 +33,18 @@ const ContextState = (props) => {
         })
     }
 
+    const endTimer = () => {
+        dispatch({
+            type: TIME_ENDED
+        })
+    }
+
     return (
         <ContextObject.Provider value={{
             ...state,
             getWord,
-            userAttempt
+            userAttempt,
+            endTimer
         }}>
             {props.children}
         </ContextObject.Provider>

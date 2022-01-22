@@ -11,7 +11,8 @@ const initialState = {
 const ContextObject = React.createContext({
     ...initialState,
     getWord: () => {},
-    userAttempt: (input) => {}
+    userAttempt: (input) => {},
+    endTimer: () => {}
 });
 
 export default ContextObject;

@@ -1,4 +1,4 @@
-import { WORD_FETCHED, ATTEMPT_MADE } from "./types";
+import { WORD_FETCHED, ATTEMPT_MADE, TIME_ENDED } from "./types";
 
 const ContextReducer = (state, action) => {
 	switch (action.type) {
@@ -64,6 +64,12 @@ const ContextReducer = (state, action) => {
                 gridAttempt: attemptState,
                 win: result
 			};
+		case TIME_ENDED:
+			return {
+				...state,
+				win: false,
+				attempt: 7
+			}
 		default:
 			return state;
 	}
