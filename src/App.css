@@ -31,6 +31,43 @@ input { width: 30px; margin: 5px;  }
   color: #61dafb;
 }
 
+/* .node {
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  outline: 1px solid rgba(144, 175, 175, 0.75);
+  display: inline-block;
+} */
+
+.node {
+  align-items: center;
+  border: 2px solid hsla(0,0%,69%,.69);
+  display: flex;
+  font-size: 32px;
+  font-weight: 700;
+  height: 58px;
+  justify-content: center;
+  margin: 2px;
+  text-transform: uppercase;
+  width: 58px;
+}
+
+.col-white {
+  background-color: white;
+}
+
+.col-yellow {
+  background-color: yellow;
+}
+
+.col-green {
+  background-color: green;
+}
+
+.col-grey {
+  background-color: gray;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
