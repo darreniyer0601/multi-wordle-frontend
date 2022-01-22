@@ -26,13 +26,16 @@ const Attempt = () => {
 			{ctx.win
 				? null
 				: ctx.attempt < 6 && (
-						<input
-							type="text"
-							onChange={handleChange}
-							value={state}
-							minLength={5}
-							maxLength={5}
-						/>
+						<>
+							<h3>Input Below</h3>
+							<input
+								type="text"
+								onChange={handleChange}
+								value={state}
+								minLength={5}
+								maxLength={5}
+							/>
+						</>
 				  )}
 			<br></br>
 			{ctx.win ? (

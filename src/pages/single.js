@@ -12,7 +12,6 @@ const Single = () => {
 			<Timer />
 			<Grid />
 			<br></br>
-			<h3>Input Below</h3>
 			<Attempt />
 		</div>
 	);
