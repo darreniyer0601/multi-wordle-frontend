@@ -8,6 +8,7 @@ import Single from "./pages/single";
 import Multi from "./pages/multi";
 
 import ContextState from "./context/ContextState";
+import Rooms from "./pages/rooms";
 
 function App() {
 	return (
@@ -24,6 +25,7 @@ function App() {
 					<Route path="/" element={<Home />} />
 					<Route path='/single' element={<Single />} />
 					<Route path='/multi' element={<Multi />} />
+					<Route path='/rooms' element={<Rooms />} />
 				</Routes>
 			</ContextState>
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Comic+Neue"></link>

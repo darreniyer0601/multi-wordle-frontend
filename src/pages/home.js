@@ -12,7 +12,7 @@ const Home = () => {
 			<div className="d-flex flex-column align-items-center">
 				<strong>Now choose between single and multiplayer!</strong>
 				<Link className="btn btn-light" to="/single">Single</Link>
-				<Link className="btn btn-light" to="/multi">Multiplayer</Link>
+				<Link className="btn btn-light" to="/rooms">Multiplayer</Link>
 			</div>
 		</div>
 	);
