@@ -49,6 +49,22 @@
   width: 58px;
 }
 
+.col-white {
+  background-color: white;
+}
+
+.col-yellow {
+  background-color: yellow;
+}
+
+.col-green {
+  background-color: green;
+}
+
+.col-grey {
+  background-color: gray;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

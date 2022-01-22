@@ -14,7 +14,7 @@ const initialState = {
     gridAttempt: [],
 }
 
-const ContextState = () => {
+const ContextState = (props) => {
     const [state, dispatch] = useReducer(ContextReducer, initialState);
 
     const getWord = async () => {
@@ -37,7 +37,7 @@ const ContextState = () => {
             getWord,
             userAttempt
         }}>
-
+            {props.children}
         </ContextObject.Provider>
     )
 }
