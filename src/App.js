@@ -1,7 +1,6 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
+import { Link, Route, Routes } from "react-router-dom";
 import "./App.css";
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 // Pages
 import Home from "./pages/home";
@@ -14,6 +13,13 @@ function App() {
 	return (
 		<div className="App">
 			<ContextState>
+				<nav>
+					<ul className="horizontal gray">
+						<li>
+							<Link className="nav-link" to='/' >Home</Link>
+						</li>
+					</ul>
+				</nav>
 				<Routes>
 					<Route path="/" element={<Home />} />
 					<Route path='/single' element={<Single />} />
