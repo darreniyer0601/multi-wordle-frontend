@@ -6,6 +6,81 @@ body {
   text-align: center;
 }
 
+.d-flex {
+  display: flex;
+}
+
+.flex-row {
+  flex-direction: row;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.btn {
+  width: 20%;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-weight: 400;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  border: 1px solid transparent;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.43;
+  border-radius: 4px;
+  text-decoration: none;
+}
+
+.btn-light {
+  background-color: #ccc;
+  color: #333;
+}
+
+.btn-dark {
+  background-color: #333;
+  color: #ccc;
+}
+
+.btn-light:hover {
+  background-color: #333;
+  color: #ccc;
+}
+
+.btn-dark:hover {
+  background-color: #ccc;
+  color: #333;
+}
+
+.text-align-center {
+  text-align: center;
+  align-items: center;
+}
+
+ul.horizontal {
+  list-style-type: none;
+  height: 30px;
+  margin: 5px;
+  padding: 2px;
+  overflow: hidden;
+}
+
+ul.horizontal li {
+  float: left;
+  display: list-item;
+}
+
+.nav-link {
+  font-size: large;
+  font-weight: bold;
+  text-decoration: none;
+  color: white;
+  text-shadow: black;
+}
+
 input { 
   width: 200px; 
   height: 25px;
