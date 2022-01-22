@@ -1,5 +1,16 @@
 import React from "react";
 
-const ContextObject = React.createContext();
+const initialState = {
+    givenWord: '',
+    attempt: 0,
+    gridState: [],
+    gridAttempt: [],
+}
+
+const ContextObject = React.createContext({
+    ...initialState,
+    getWord: () => {},
+    userAttempt: (input) => {}
+});
 
 export default ContextObject;
