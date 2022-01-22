@@ -10,13 +10,14 @@ function App() {
 	return (
 		<div className="App">
 			<ContextState>
-        <h2>Screw NFTs! Let's make some words!</h2>
+        <h2>Wordly</h2>
         <Timer />
 				<Grid />
         <br></br>
         <h3>Shoot your shot soldier!</h3>
         <Attempt />
 			</ContextState>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Comic+Neue"></link>
 		</div>
 	);
 }
