@@ -28,7 +28,7 @@ const Single = () => {
 		<div className="App">
 			<h2>Single Player</h2>
 			<Timer />
-			<Grid />
+			<Grid userGrid={true} />
 			<br></br>
 			<Attempt />
 		</div>

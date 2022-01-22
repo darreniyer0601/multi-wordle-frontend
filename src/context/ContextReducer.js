@@ -4,10 +4,12 @@ const ContextReducer = (state, action) => {
 	switch (action.type) {
 		case WORD_FETCHED:
 			const temp = [];
+			const opp = [];
             const temp2 = [];
 			for (let i = 1; i <= 6 ; i++) {
 				let newList = ["white", "white", "white", "white", "white"];
 				temp.push(newList);
+				opp.push(newList);
 
                 let vals = ['', '', '', '', ''];
                 temp2.push(vals);
@@ -18,29 +20,35 @@ const ContextReducer = (state, action) => {
 				givenWord: action.payload,
 				gridState: temp,
                 gridAttempt: temp2,
+				opponentState: opp,
                 attempt: 0,
                 win: false
 			};
 
 		case ATTEMPT_MADE:
-			const tempState = [...state.gridState[state.attempt]];
-			const curState = [...state.gridState];
+			let t1 = state.gridState[state.attempt];
+			const tempState = [...t1];
+			
+			const curState = [];
+			state.gridState.forEach(obj => {
+				curState.push(obj);
+			})
+
             let result = true;
 
-            console.log('tempState', tempState);
-            console.log('curState', curState);
+			let t2 = state.gridAttempt[state.attempt];
+			const attemptState = [...t2];
 
-            const attemptState = [...state.gridAttempt];
-            const curAttempt = [...state.gridAttempt[state.attempt]];
-
-            console.log('attemptState', attemptState);
-            console.log('curAttempt', curAttempt);
+			const curAttempt = [];
+			state.gridAttempt.forEach(obj => {
+				curAttempt.push(obj);
+			})
 
 			const guess = action.payload;
 			const solution = state.givenWord;
 
 			for (let i = 0; i < guess.length; i++) {
-                curAttempt[i] = guess[i];
+                attemptState[i] = guess[i];
 				let guessedLetter = guess.charAt(i);
 				let solutionLetter = solution.charAt(i);
 				if (guessedLetter === solutionLetter) {
@@ -54,14 +62,14 @@ const ContextReducer = (state, action) => {
 				}
 			}
 
-            attemptState[state.attempt] = curAttempt;
+            curAttempt[state.attempt] = attemptState;
 			curState[state.attempt] = tempState;
 
 			return {
 				...state,
 				attempt: state.attempt + 1,
 				gridState: curState,
-                gridAttempt: attemptState,
+                gridAttempt: curAttempt,
                 win: result
 			};
 		case TIME_ENDED:

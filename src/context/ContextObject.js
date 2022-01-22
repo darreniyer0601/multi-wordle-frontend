@@ -5,6 +5,7 @@ const initialState = {
     attempt: 0,
     gridState: [],
     gridAttempt: [],
+    opponentState: [],
     win: false
 }
 
