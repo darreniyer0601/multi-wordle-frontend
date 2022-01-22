@@ -24,6 +24,11 @@ const Single = () => {
 		}
 	}, [ctx]);
 
+	function disappear() {
+		document.getElementById("rectangle1").style.display = "none"
+		document.getElementById("rectangle2").style.display = "none"
+	}
+	disappear();
 	return (
 		<div className="App">
 			<h2>Single Player</h2>

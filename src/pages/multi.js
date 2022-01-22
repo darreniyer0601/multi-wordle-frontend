@@ -4,6 +4,12 @@ import Grid from "../components/grid";
 import Attempt from '../components/attempt';
 
 const Multi = () => {
+
+  function disappear() {
+		document.getElementById("rectangle1").style.display = "none"
+		document.getElementById("rectangle2").style.display = "none"
+	}
+	disappear();
   return <div>
     <h2>Multiplayer</h2>
     <Timer />
