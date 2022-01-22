@@ -14,7 +14,34 @@ h2 {
   color: white;
   font-weight: bold;
   text-shadow: 0px 3px 3px rgba(0, 0, 0, 0.25), 0px 3px 3px rgba(0, 0, 0, 0.25), 0px 3px 3px rgba(0, 0, 0, 0.25);
+  z-index: 1;
 
+}
+
+#rectangle1 {
+  height: 80px;
+  width: 90px;
+  background-color: #008B8B;
+  position: absolute;
+  margin-top: 40px;
+  margin-left: 580px;
+  z-index: -1;
+  border-radius: 10px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  transform: rotate(-10deg);
+
+}
+
+#rectangle2 {
+  height: 100px;
+  width: 110px;
+  background-color: #FF6A3DD9;
+  position: absolute;
+  margin-top: 32px;
+  margin-left: 570px;
+  z-index: -2;
+  border-radius: 10px;
+  transform: rotate(-10deg);
 }
 
 #ourgrid {
