@@ -1,21 +1,30 @@
 import React from "react";
+import { Link, Route, Routes } from "react-router-dom";
 import "./App.css";
-import Attempt from "./components/attempt";
 
-import Grid from "./components/grid";
-import Timer from "./components/timer";
+// Pages
+import Home from "./pages/home";
+import Single from "./pages/single";
+import Multi from "./pages/multi";
+
 import ContextState from "./context/ContextState";
 
 function App() {
 	return (
 		<div className="App">
 			<ContextState>
-        <h2>Wordly</h2>
-        <Timer />
-				<Grid />
-        <br></br>
-        <h3>Shoot your shot soldier!</h3>
-        <Attempt />
+				<nav>
+					<ul className="horizontal gray">
+						<li>
+							<Link className="nav-link" to='/' >Home</Link>
+						</li>
+					</ul>
+				</nav>
+				<Routes>
+					<Route path="/" element={<Home />} />
+					<Route path='/single' element={<Single />} />
+					<Route path='/multi' element={<Multi />} />
+				</Routes>
 			</ContextState>
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Comic+Neue"></link>
 		</div>
