@@ -26,6 +26,7 @@ function App() {
 					<Route path='/multi' element={<Multi />} />
 				</Routes>
 			</ContextState>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Comic+Neue"></link>
 		</div>
 	);
 }

@@ -37,12 +37,12 @@ const Attempt = () => {
 			<br></br>
 			{ctx.win ? (
 				<button type="button" onClick={resetGame}>
-					Put 'er there soldier! Give it another shot!
+					Play Again?
 				</button>
 			) : (
 				ctx.attempt >= 6 && (
 					<button type="button" onClick={resetGame}>
-						Don't give up soldier! Try that again!
+						Play Again?
 					</button>
 				)
 			)}
