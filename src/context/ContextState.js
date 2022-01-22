@@ -12,6 +12,7 @@ const initialState = {
     attempt: 0,
     gridState: [],
     gridAttempt: [],
+    win: false
 }
 
 const ContextState = (props) => {

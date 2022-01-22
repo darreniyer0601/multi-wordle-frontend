@@ -17,12 +17,15 @@ const ContextReducer = (state, action) => {
 				...state,
 				givenWord: action.payload,
 				gridState: temp,
-                gridAttempt: temp2
+                gridAttempt: temp2,
+                attempt: 0,
+                win: false
 			};
 
 		case ATTEMPT_MADE:
 			const tempState = [...state.gridState[state.attempt]];
 			const curState = [...state.gridState];
+            let result = true;
 
             console.log('tempState', tempState);
             console.log('curState', curState);
@@ -43,9 +46,11 @@ const ContextReducer = (state, action) => {
 				if (guessedLetter === solutionLetter) {
 					tempState[i] = "green";
 				} else if (solution.indexOf(guessedLetter) !== -1) {
+                    result = false;
 					tempState[i] = "yellow";
 				} else {
 					tempState[i] = "grey";
+                    result = false;
 				}
 			}
 
@@ -56,7 +61,8 @@ const ContextReducer = (state, action) => {
 				...state,
 				attempt: state.attempt + 1,
 				gridState: curState,
-                gridAttempt: attemptState
+                gridAttempt: attemptState,
+                win: result
 			};
 		default:
 			return state;

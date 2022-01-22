@@ -5,6 +5,7 @@ const initialState = {
     attempt: 0,
     gridState: [],
     gridAttempt: [],
+    win: false
 }
 
 const ContextObject = React.createContext({
