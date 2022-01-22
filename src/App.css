@@ -93,7 +93,14 @@ button {
 
 .text-align-center {
   text-align: center;
+}
+
+.align-items-center {
   align-items: center;
+}
+
+.justify-content-center {
+  justify-content: center;
 }
 
 ul.horizontal {

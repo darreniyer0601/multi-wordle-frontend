@@ -8,11 +8,11 @@ const Multi = () => {
     <h2>Multiplayer</h2>
     <Timer />
     <div id='ourgrid'>
-      <Grid />
+      <Grid userGrid={true} />
       <Attempt />
     </div>
     <div id='oponentgrid'>
-      <Grid />
+      <Grid userGrid={false} />
     </div>
   </div>;
 };

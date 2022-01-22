@@ -5,23 +5,26 @@ import ContextObject from "../context/ContextObject";
 const Node = (props) => {
 	const ctx = useContext(ContextObject);
 
-	const { gridState, gridAttempt } = ctx;
+	const { gridState, gridAttempt, opponentState } = ctx;
+
+	const currentGrid = props.userGrid ? gridState : opponentState;
+	const currentAttempt = props.userGrid ? gridAttempt : null;
 
 	const row = Math.round(props.id / 10);
 	const col = props.id % 10;
 
 	return (
 		<div id={props.id} key={props.id}>
-			{gridState && gridState[row] && gridState[row][col] ? (
-				<div className={`node col-${gridState[row][col]}`}>
-					{gridAttempt && gridAttempt[row] && gridAttempt[row][col]
-						? gridAttempt[row][col]
+			{currentGrid && currentGrid[row] && currentGrid[row][col] ? (
+				<div className={`node col-${currentGrid[row][col]}`}>
+					{currentAttempt && currentAttempt[row] && currentAttempt[row][col]
+						? currentAttempt[row][col]
 						: ""}
 				</div>
 			) : (
 				<div className="node">
-					{gridAttempt && gridAttempt[row] && gridAttempt[row][col]
-						? gridAttempt[row][col]
+					{currentAttempt && currentAttempt[row] && currentAttempt[row][col]
+						? currentAttempt[row][col]
 						: ""}
 				</div>
 			)}
