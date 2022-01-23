@@ -5,6 +5,7 @@ import {
 	OPPONENT_ATTEMPT,
 	ROOM_CREATED,
 	ROOM_JOINED,
+	GAME_ENDED,
 } from "./types";
 
 const ContextReducer = (state, action) => {
@@ -169,6 +170,14 @@ const ContextReducer = (state, action) => {
 				room: action.room,
 				players: action.players,
 				playerId: plId
+			}
+		case GAME_ENDED:
+			return {
+				...state,
+				players: 0,
+				room: null,
+				win: false,
+				oppWin: false,
 			}
 		default:
 			return state;

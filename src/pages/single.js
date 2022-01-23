@@ -19,7 +19,7 @@ const Single = () => {
 			alert('You have completed the challenge!');
 		} else {
 			if (ctx.attempt >= 6) {
-				alert('Sorry! Try again next time!');
+				alert(`Sorry! The word was ${ctx.givenWord}`);
 			}
 		}
 	}, [ctx]);

@@ -1,9 +1,10 @@
-import React, { useEffect, useReducer, useState } from "react";
-// import { io } from "socket.io-client";
+import React, { useEffect, useReducer } from "react";
 import { socket } from "./Socket";
 
 import ContextObject from "./ContextObject";
 import ContextReducer from "./ContextReducer";
+
+import { getRandomWord } from '../util/words';
 
 import {
 	WORD_FETCHED,
@@ -12,10 +13,8 @@ import {
 	OPPONENT_ATTEMPT,
 	ROOM_CREATED,
 	ROOM_JOINED,
+	GAME_ENDED,
 } from "./types";
-
-const url1 = "http://localhost:8000";
-const url2 = "https://multi-wordly-backend.herokuapp.com/";
 
 const initialState = {
 	givenWord: "",
@@ -57,9 +56,11 @@ const ContextState = (props) => {
 	}, []);
 
 	const getWord = async () => {
+		const word = getRandomWord();
+
 		dispatch({
 			type: WORD_FETCHED,
-			payload: "venue",
+			payload: word,
 		});
 	};
 
@@ -98,6 +99,12 @@ const ContextState = (props) => {
 		});
 	};
 
+	const endGame = () => {
+		dispatch({
+			type: GAME_ENDED
+		})
+	}
+
 	return (
 		<ContextObject.Provider
 			value={{
@@ -107,6 +114,7 @@ const ContextState = (props) => {
 				endTimer,
 				createRoom,
 				joinRoom,
+				endGame
 			}}
 		>
 			{props.children}

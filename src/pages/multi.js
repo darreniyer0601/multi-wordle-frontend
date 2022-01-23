@@ -18,8 +18,9 @@ const Multi = () => {
 			if (ctx.win) {
 				alert("Congratulations! You won!");
 			} else {
-				alert("Sorry! You lost!");
+				alert(`Sorry! The word was ${ctx.givenWord}`);
 			}
+			ctx.endGame();
 		}
 	}, [ctx]);
 
