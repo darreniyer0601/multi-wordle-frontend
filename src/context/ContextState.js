@@ -43,14 +43,11 @@ const ContextState = (props) => {
 
 	useEffect(() => {
 		socket.on("moveMade", (obj) => {
-			// console.log(`${state.playerId}`, obj.id === state.playerId);
-			if (obj.id !== state.playerId) {
-				console.log('executing');
-				dispatch({
-					type: OPPONENT_ATTEMPT,
-					payload: obj.input
-				})
-			}
+			dispatch({
+				type: OPPONENT_ATTEMPT,
+				payload: obj.input,
+				id: obj.id
+			});
 		});
 
 		socket.on("roomJoined", (obj) => {
@@ -59,7 +56,7 @@ const ContextState = (props) => {
 					type: ROOM_JOINED,
 					room: obj.room,
 					players: obj.players,
-					id: obj.id
+					id: obj.id,
 				});
 			}
 		});
