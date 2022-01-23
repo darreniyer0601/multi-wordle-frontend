@@ -29,6 +29,7 @@ const ContextReducer = (state, action) => {
 				gridAttempt: temp2,
 				opponentState: opp,
 				attempt: 0,
+				opponentAttempt: 0,
 				win: false,
 			};
 
@@ -81,6 +82,10 @@ const ContextReducer = (state, action) => {
 				win: result,
 			};
 		case OPPONENT_ATTEMPT:
+			if (action.id === state.playerId) {
+				return state;
+			}
+
 			let t3 = state.opponentState[state.opponentAttempt];
 			const tempOppState = [...t3];
 
@@ -90,20 +95,21 @@ const ContextReducer = (state, action) => {
 			});
 
 			let res = true;
+			const sol = state.givenWord;
 
 			const oppGuess = action.payload;
 
 			for (let i = 0; i < oppGuess.length; i++) {
 				let guessedLetter = oppGuess.charAt(i);
-				let solutionLetter = solution.charAt(i);
-				if (guessedLetter === solutionLetter) {
+				let solLetter = sol.charAt(i);
+				if (guessedLetter === solLetter) {
 					tempOppState[i] = "green";
-				} else if (solution.indexOf(guessedLetter) !== -1) {
-					result = false;
+				} else if (sol.indexOf(guessedLetter) !== -1) {
+					res = false;
 					tempOppState[i] = "yellow";
 				} else {
 					tempOppState[i] = "grey";
-					result = false;
+					res = false;
 				}
 			}
 
@@ -117,7 +123,7 @@ const ContextReducer = (state, action) => {
 
 			return {
 				...state,
-				opponentState: tempOppState,
+				opponentState: curOppState,
 				opponentAttempt: state.opponentAttempt + 1,
 				win: usr_res,
 			};
