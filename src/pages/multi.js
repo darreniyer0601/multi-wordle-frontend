@@ -14,19 +14,11 @@ const Multi = () => {
 	}, []);
 
 	useEffect(() => {
-		if (ctx.win) {
-			alert('You have completed the challenge!');
-		} else {
-			if (ctx.attempt >= 6) {
-				alert('Sorry! Try again next time!');
+		if (ctx.gameOver) {
+			if (ctx.win) {
+				alert("Congratulations! You won!");
 			} else {
-				if (ctx.oppWin) {
-					alert("Sorry! The opponent won!");
-				} else {
-					if (ctx.opponentAttempt >= 6) {
-						alert("You won due to your opponent's loss!");
-					}
-				}
+				alert("Sorry! You lost!");
 			}
 		}
 	}, [ctx]);
