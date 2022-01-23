@@ -7,6 +7,11 @@ import ContextObject from "../context/ContextObject";
 
 const Multi = () => {
 	const ctx = useContext(ContextObject);
+	
+	useEffect(() => {
+		ctx.getWord();
+		// eslint-disable-next-line
+	}, []);
 
 	useEffect(() => {
 		if (ctx.gameOver) {

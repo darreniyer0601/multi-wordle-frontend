@@ -108,9 +108,9 @@ const ContextReducer = (state, action) => {
 			});
 
 			let res = true;
-			const sol = state.givenWord;
+			const sol = action.givenWord;
 
-			const oppGuess = action.payload;
+			const oppGuess = action.input;
 
 			for (let i = 0; i < oppGuess.length; i++) {
 				let guessedLetter = oppGuess.charAt(i);

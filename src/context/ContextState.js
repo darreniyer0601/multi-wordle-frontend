@@ -38,7 +38,8 @@ const ContextState = (props) => {
 		socket.on("moveMade", (obj) => {
 			dispatch({
 				type: OPPONENT_ATTEMPT,
-				payload: obj.input,
+				input: obj.input,
+				givenWord: obj.givenWord,
 				id: obj.id
 			});
 		});
@@ -82,11 +83,14 @@ const ContextState = (props) => {
 	};
 
 	const joinRoom = async (room) => {
-		await socket.emit("joinRoom", room);
+		await socket.emit("joinRoom", {
+			room: room,
+			givenWord: state.givenWord
+		});
 	};
 
 	const userAttempt = async (input) => {
-		await socket.emit("move", input);
+		await socket.emit("move", { input, givenWord: state.givenWord });
 		dispatch({
 			type: ATTEMPT_MADE,
 			payload: input,
