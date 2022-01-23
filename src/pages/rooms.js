@@ -8,6 +8,16 @@ const Rooms = () => {
 	const [room, setRoom] = useState("");
     const navigate = useNavigate();
 
+	function disappear() {
+		if (document.getElementById("rectangle1") === null) {
+			return;
+		}
+		document.getElementById("rectangle1").style.display = "none";
+		document.getElementById("rectangle2").style.display = "none";
+	}
+
+	disappear();
+
 	useEffect(() => {
 		if (ctx.players === 2) {
 			navigate('/multi');
