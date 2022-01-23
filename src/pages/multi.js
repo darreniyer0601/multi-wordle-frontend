@@ -20,7 +20,6 @@ const Multi = () => {
 			} else {
 				alert(`Sorry! The word was ${ctx.givenWord}`);
 			}
-			ctx.endGame();
 		}
 	}, [ctx]);
 
