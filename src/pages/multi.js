@@ -14,6 +14,9 @@ const Multi = () => {
 	}, []);
 
 	function disappear() {
+		if (document.getElementById("rectangle1") === null) {
+			return;
+		}
 		document.getElementById("rectangle1").style.display = "none";
 		document.getElementById("rectangle2").style.display = "none";
 	}
