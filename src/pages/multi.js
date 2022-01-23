@@ -9,11 +9,6 @@ const Multi = () => {
 	const ctx = useContext(ContextObject);
 
 	useEffect(() => {
-		ctx.getWord();
-		// eslint-disable-next-line
-	}, []);
-
-	useEffect(() => {
 		if (ctx.gameOver) {
 			if (ctx.win) {
 				alert("Congratulations! You won!");

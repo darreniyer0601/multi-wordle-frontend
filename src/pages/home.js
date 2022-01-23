@@ -1,7 +1,15 @@
-import React from "react";
+import React, { useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
+import ContextObject from "../context/ContextObject";
 
 const Home = () => {
+	const ctx = useContext(ContextObject);
+
+	useEffect(() => {
+		ctx.getWord();
+		// eslint-disable-next-line
+	}, []);
+
 	function appear() {
 		if (document.getElementById("rectangle1") === null) {
 			return;
