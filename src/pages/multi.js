@@ -13,6 +13,16 @@ const Multi = () => {
 		// eslint-disable-next-line
 	}, []);
 
+	useEffect(() => {
+		if (ctx.gameOver) {
+			if (ctx.win) {
+				alert("Congratulations! You won!");
+			} else {
+				alert("Sorry! You lost!");
+			}
+		}
+	}, [ctx]);
+
 	function disappear() {
 		document.getElementById("rectangle1").style.display = "none";
 		document.getElementById("rectangle2").style.display = "none";

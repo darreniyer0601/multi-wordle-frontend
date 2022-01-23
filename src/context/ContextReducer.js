@@ -31,6 +31,7 @@ const ContextReducer = (state, action) => {
 				attempt: 0,
 				opponentAttempt: 0,
 				win: false,
+				gameOver: false
 			};
 
 		case ATTEMPT_MADE:
@@ -74,12 +75,22 @@ const ContextReducer = (state, action) => {
 			curAttempt[state.attempt] = attemptState;
 			curState[state.attempt] = tempState;
 
+			let gameState = false;
+			if (result) {
+				gameState = true;
+			}
+
+			if (state.attempt >= 5) {
+				gameState = true;
+			}
+
 			return {
 				...state,
 				attempt: state.attempt + 1,
 				gridState: curState,
 				gridAttempt: curAttempt,
 				win: result,
+				gameOver: gameState
 			};
 		case OPPONENT_ATTEMPT:
 			if (action.id === state.playerId) {
@@ -115,17 +126,22 @@ const ContextReducer = (state, action) => {
 
 			curOppState[state.opponentAttempt] = tempOppState;
 
-			let usr_res = false;
+			
+			let newGameState = false;
+			if (res) {
+				newGameState = true;
+			}
 
-			if (res === false && state.opponentAttempt >= 6) {
-				usr_res = true;
+			if (state.opponentAttempt >= 5) {
+				newGameState = true;
 			}
 
 			return {
 				...state,
 				opponentState: curOppState,
 				opponentAttempt: state.opponentAttempt + 1,
-				win: usr_res,
+				oppWin: res,
+				gameState: newGameState
 			};
 		case TIME_ENDED:
 			return {

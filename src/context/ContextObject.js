@@ -8,9 +8,11 @@ const initialState = {
     gridAttempt: [],
     opponentState: [],
     win: false,
+    oppWin: false,
     players: 0,
     room: null,
-    playerId: null
+    playerId: null,
+    gameOver: false
 }
 
 const ContextObject = React.createContext({
