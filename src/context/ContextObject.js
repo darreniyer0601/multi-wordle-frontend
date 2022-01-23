@@ -21,7 +21,8 @@ const ContextObject = React.createContext({
     userAttempt: (input) => {},
     endTimer: () => {},
     createRoom: (room) => {},
-    joinRoom: (room) => {}
+    joinRoom: (room) => {},
+    endGame: () => {}
 });
 
 export default ContextObject;
