@@ -17,6 +17,9 @@ const Home = () => {
             <p><small>A word-based game to test your vocabulary.</small></p>
             <p><small>Enter 5 letter words and receive hints.</small></p>
             <p><small>Use the hints to get closer to the correct answer.</small></p>
+			<p><small>A green background will indicate the letter is in the correct position</small></p>
+			<p><small>A orange background will indicate the letter is in the solution but in the incorrect position</small></p>
+			<p><small>A grey background will indicate the letter is not in the solution</small></p>
 			<div className="d-flex flex-column align-items-center">
 				<strong>Now choose between single and multiplayer!</strong>
 				<Link className="btn btn-light" to="/single">Single</Link>
