@@ -34,6 +34,7 @@ const ContextReducer = (state, action) => {
 
 		case ATTEMPT_MADE:
 			let t1 = state.gridState[state.attempt];
+
 			const tempState = [...t1];
 
 			const curState = [];
