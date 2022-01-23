@@ -8,7 +8,7 @@ const Attempt = () => {
 
 	const handleChange = (e) => {
 		let value = e.target.value;
-		value = value.replace(/[^A-Za-z]/ig, '');
+		value = value.replace(/[^A-Za-z]/gi, "");
 		setState(value);
 	};
 
@@ -25,31 +25,23 @@ const Attempt = () => {
 
 	return (
 		<form onSubmit={handleSubmit}>
-			{ctx.win
-				? null
-				: ctx.attempt < 6 && (
-						<>
-							<h3>Input Below</h3>
-							<input
-								type="text"
-								onChange={handleChange}
-								value={state}
-								minLength={5}
-								maxLength={5}
-							/>
-						</>
-				  )}
+			{!ctx.gameOver && (
+				<>
+					<h3>Input Below</h3>
+					<input
+						type="text"
+						onChange={handleChange}
+						value={state}
+						minLength={5}
+						maxLength={5}
+					/>
+				</>
+			)}
 			<br></br>
-			{ctx.win ? (
+			{ctx.gameOver && (
 				<button type="button" onClick={resetGame}>
 					Play Again?
 				</button>
-			) : (
-				ctx.attempt >= 6 && (
-					<button type="button" onClick={resetGame}>
-						Play Again?
-					</button>
-				)
 			)}
 		</form>
 	);

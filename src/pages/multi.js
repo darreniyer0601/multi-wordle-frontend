@@ -13,6 +13,24 @@ const Multi = () => {
 		// eslint-disable-next-line
 	}, []);
 
+	useEffect(() => {
+		if (ctx.win) {
+			alert('You have completed the challenge!');
+		} else {
+			if (ctx.attempt >= 6) {
+				alert('Sorry! Try again next time!');
+			} else {
+				if (ctx.oppWin) {
+					alert("Sorry! The opponent won!");
+				} else {
+					if (ctx.opponentAttempt >= 6) {
+						alert("You won due to your opponent's loss!");
+					}
+				}
+			}
+		}
+	}, [ctx]);
+
 	function disappear() {
 		document.getElementById("rectangle1").style.display = "none";
 		document.getElementById("rectangle2").style.display = "none";

@@ -25,21 +25,15 @@ const initialState = {
 	gridAttempt: [],
 	opponentState: [],
 	win: false,
+	oppWin: false,
 	players: 0,
 	room: null,
 	playerId: null,
+	gameOver: false
 };
 
 const ContextState = (props) => {
 	const [state, dispatch] = useReducer(ContextReducer, initialState);
-	// const [socket, setSocket] = useState(null);
-
-	// useEffect(() => {
-	// 	const newSocket = io(url1);
-	// 	setSocket(newSocket);
-
-	// 	return () => newSocket.close();
-	// }, []);
 
 	useEffect(() => {
 		socket.on("moveMade", (obj) => {
@@ -97,13 +91,6 @@ const ContextState = (props) => {
 			payload: input,
 		});
 	};
-
-	// const opponentMove = (input) => {
-	// 	dispatch({
-	// 		type: OPPONENT_ATTEMPT,
-	// 		payload: input,
-	// 	});
-	// };
 
 	const endTimer = () => {
 		dispatch({
