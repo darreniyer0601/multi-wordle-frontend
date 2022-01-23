@@ -82,6 +82,10 @@ const ContextReducer = (state, action) => {
 				win: result,
 			};
 		case OPPONENT_ATTEMPT:
+			if (action.id === state.playerId) {
+				return state;
+			}
+
 			let t3 = state.opponentState[state.opponentAttempt];
 			const tempOppState = [...t3];
 
