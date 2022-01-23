@@ -29,6 +29,7 @@ const ContextReducer = (state, action) => {
 				gridAttempt: temp2,
 				opponentState: opp,
 				attempt: 0,
+				opponentAttempt: 0,
 				win: false,
 			};
 
