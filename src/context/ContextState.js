@@ -1,5 +1,6 @@
 import React, { useEffect, useReducer, useState } from "react";
-import { io } from "socket.io-client";
+// import { io } from "socket.io-client";
+import { socket } from "./Socket";
 
 import ContextObject from "./ContextObject";
 import ContextReducer from "./ContextReducer";
@@ -12,6 +13,9 @@ import {
 	ROOM_CREATED,
 	ROOM_JOINED,
 } from "./types";
+
+const url1 = "http://localhost:8000";
+const url2 = "https://multi-wordly-backend.herokuapp.com/";
 
 const initialState = {
 	givenWord: "",
@@ -28,23 +32,38 @@ const initialState = {
 
 const ContextState = (props) => {
 	const [state, dispatch] = useReducer(ContextReducer, initialState);
-	const [socket, setSocket] = useState(null);
+	// const [socket, setSocket] = useState(null);
+
+	// useEffect(() => {
+	// 	const newSocket = io(url1);
+	// 	setSocket(newSocket);
+
+	// 	return () => newSocket.close();
+	// }, []);
 
 	useEffect(() => {
-		const newSocket = io("https://multi-wordly-backend.herokuapp.com/");
-		setSocket(newSocket);
-		return () => newSocket.close();
+		socket.on("moveMade", (obj) => {
+			// console.log(`${state.playerId}`, obj.id === state.playerId);
+			if (obj.id !== state.playerId) {
+				console.log('executing');
+				dispatch({
+					type: OPPONENT_ATTEMPT,
+					payload: obj.input
+				})
+			}
+		});
+
+		socket.on("roomJoined", (obj) => {
+			if (!state.playerId) {
+				dispatch({
+					type: ROOM_JOINED,
+					room: obj.room,
+					players: obj.players,
+					id: obj.id
+				});
+			}
+		});
 	}, []);
-
-	useEffect(() => {
-		if (socket) {
-			socket.on('moveMade', obj => {
-				console.log('obj', obj);
-			})
-
-			socket.on('')
-		}
-	})
 
 	const getWord = async () => {
 		dispatch({
@@ -56,7 +75,7 @@ const ContextState = (props) => {
 	const createRoom = async (room) => {
 		await socket.emit("createRoom", room);
 
-		socket.on("roomCreated", (obj) => {
+		await socket.on("roomCreated", (obj) => {
 			dispatch({
 				type: ROOM_CREATED,
 				room: obj.room,
@@ -65,25 +84,17 @@ const ContextState = (props) => {
 			});
 		});
 
-		socket.on("roomExists", (msg) => {
-			throw new Error(msg);
+		await socket.on("roomExists", (msg) => {
+			alert(msg);
 		});
 	};
 
 	const joinRoom = async (room) => {
 		await socket.emit("joinRoom", room);
-
-		socket.on("roomJoined", (obj) => {
-			dispatch({
-				type: ROOM_JOINED,
-				room: obj.room,
-				players: obj.players,
-			});
-		});
 	};
 
 	const userAttempt = async (input) => {
-		await socket.emit('move', input);
+		await socket.emit("move", input);
 		dispatch({
 			type: ATTEMPT_MADE,
 			payload: input,
