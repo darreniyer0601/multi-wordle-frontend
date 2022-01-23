@@ -14,6 +14,7 @@ const ContextReducer = (state, action) => {
 			const temp = [];
 			const opp = [];
 			const temp2 = [];
+
 			for (let i = 1; i <= 6; i++) {
 				let newList = ["white", "white", "white", "white", "white"];
 				temp.push(newList);
@@ -127,7 +128,6 @@ const ContextReducer = (state, action) => {
 
 			curOppState[state.opponentAttempt] = tempOppState;
 
-			
 			let newGameState = false;
 			if (res) {
 				newGameState = true;
