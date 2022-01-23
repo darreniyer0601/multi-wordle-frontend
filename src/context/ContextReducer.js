@@ -24,9 +24,14 @@ const ContextReducer = (state, action) => {
 				temp2.push(vals);
 			}
 
+			let word = action.payload;
+			if (state.givenWord !== '') {
+				word = state.givenWord;
+			}
+
 			return {
 				...state,
-				givenWord: action.payload,
+				givenWord: word,
 				gridState: temp,
 				gridAttempt: temp2,
 				opponentState: opp,
