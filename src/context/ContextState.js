@@ -37,9 +37,13 @@ const ContextState = (props) => {
 	}, []);
 
 	useEffect(() => {
-		socket.on('moveMade', obj => {
-			console.log('obj', obj);
-		})
+		if (socket) {
+			socket.on('moveMade', obj => {
+				console.log('obj', obj);
+			})
+
+			socket.on('')
+		}
 	})
 
 	const getWord = async () => {
